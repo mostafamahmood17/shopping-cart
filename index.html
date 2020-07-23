@@ -16,7 +16,7 @@
       <div class="container">
          <div class="cart">
             <div class="col-md-12 col-lg-10 mx-auto">
-               <div class="cart-item">
+               <div class="cart-item" id="visible">
                   <div class="row">
                      <div class="col-md-7 center-item">
                         <img src="images/product-1.png" alt="">
@@ -29,13 +29,13 @@
                            <input id = "itemNumber" type="text" class="form-control text-center" value="1">
                            <button id = "plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5 >$<span id = "iphone">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
                </div>
 
-               <div class="cart-item">
+               <div class="cart-item" id="invisible">
                   <div class="row">
                      <div class="col-md-7 center-item mx-auto">
                         <img src="images/product-2.png" alt="">
@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id = "minusOne" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id = "itemNumberOne" type="text" class="form-control text-center" value="1">
+                           <button id= "plusOne" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$<span id = "iphoneCase">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -81,19 +81,67 @@
 
    <script>
       const plus = document.getElementById("plus");
-      plus.addEventListener("click", function(){
-         const itemIncrease = document.getElementById("itemNumber").value;
-          const itemNumberIncrease = parseInt(itemIncrease);
-          
+      plus.addEventListener("click", function(){  
+         increaseValue("itemNumber");
+         price("iphone", 1219, "itemNumber") ; 
          
 
-         let newNum = itemNumberIncrease + 1;
-         document.getElementById("itemNumber").value=newNum;
-         //  itemNumberIncrease= itemNumberIncrease++ ;
-         console.log(newNum);
          
+          
          
       })
+
+      const minus = document.getElementById("minus");
+      minus.addEventListener("click", function(){ 
+         decreaseValue("itemNumber", "visible");
+         price("iphone", 1219 , "itemNumber");      
+         
+      })
+
+      const plusOne = document.getElementById("plusOne");
+      plusOne.addEventListener("click", function(){  
+         increaseValue("itemNumberOne");
+         price("iphoneCase", 59, "itemNumberOne") ; 
+         
+      })
+
+      const minusOne = document.getElementById("minusOne");
+      minusOne.addEventListener("click", function(){ 
+         decreaseValue("itemNumberOne", "invisible");
+         price("iphoneCase", 59, "itemNumberOne");      
+         
+      })
+
+
+
+      function price(id, addValue, idOne){
+         const iphone = document.getElementById(id);
+         const iphoneIncrease = parseInt(iphone);
+         let newNum= document.getElementById(idOne).value;
+         document.getElementById(id).innerText = newNum * addValue; 
+         
+      }
+
+    function increaseValue(id){
+      const itemIncrease = document.getElementById(id).value;
+         const itemNumberIncrease = parseInt(itemIncrease);
+          
+         let newNum = itemNumberIncrease + 1;
+         document.getElementById(id).value=newNum;  
+
+    }
+
+    function decreaseValue(id , idTwo){
+      const itemDecrease = document.getElementById(id).value;
+         const itemNumberDecrease = parseInt(itemDecrease);
+          
+         let newNum = itemNumberDecrease - 1;
+         document.getElementById(id).value=newNum; 
+         if(newNum == 0){
+            document.getElementById(idTwo).style.display= "none";
+         } 
+
+    }
 
    </script>
 </body>
