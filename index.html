@@ -184,41 +184,25 @@
     document.getElementById("total").innerText = total;
 }
 
-   //  const subtotalMobile = document.getElementById("iphone").innerText;
-   //  const subtotalMobileNum = parseFloat(subtotalMobile);
-   //  const taxTwoDigit = subtotalMobileNum * 0.09;
-   //  document.getElementById("tax").innerText = taxTwoDigit.toFixed(2);
-
-
-
       const removeOne = document.getElementById("removeOne");
       removeOne.addEventListener("click", function(){
-      document.getElementById("visible").style.display= "none";
 
+      document.getElementById("visible").style.display= "none";
+      
       const subtotal = document.getElementById("subtotal").innerText;
       const subtotalNum = parseFloat(subtotal);
       const itemDecrease = document.getElementById("itemNumber").value;
       const itemNumberDecrease = parseFloat(itemDecrease); 
       const subtotalResult = subtotalNum - (1219 * itemNumberDecrease) ;
       document.getElementById("subtotal").innerText = subtotalResult;
-      
       const taxTwoDigit = subtotalNum * 0.09;
       document.getElementById("tax").innerText = (taxTwoDigit - (1219 * itemNumberDecrease * 0.09)).toFixed(2);
-
-      document.getElementById("total").innerText = (subtotalResult + taxTwoDigit - (1219 * itemNumberDecrease * 0.09));
- 
-      
-      
-
-      
-     
-
-      
-         
+      document.getElementById("total").innerText = (subtotalResult + taxTwoDigit - (1219 * itemNumberDecrease * 0.09)).toFixed(2);
       })
-
+      
       const removeTwo = document.getElementById("removeTwo");
-      removeTwo.addEventListener("click", function(){
+      document.getElementById("removeTwo").addEventListener("click", function(){
+         
       document.getElementById("invisible").style.display= "none";
       const subtotal = document.getElementById("subtotal").innerText;
       const subtotalNum = parseFloat(subtotal);
@@ -228,14 +212,25 @@
       document.getElementById("subtotal").innerText = subtotalResult;
       const taxTwoDigit = subtotalNum * 0.09;
       document.getElementById("tax").innerText = (taxTwoDigit - (59 * itemNumberDecrease * 0.09)).toFixed(2);
-
       document.getElementById("total").innerText = (subtotalResult + taxTwoDigit - (59 * itemNumberDecrease * 0.09)).toFixed(2);
       
-         
       })
+      
 
-      // function removeCart(id) {
-      //    document.getElementById(id).style.display= "none";    
+      // function removeCart(id, idOne, idTwo, idThree, idFour, price) {
+         
+      // document.getElementById(id).style.display= "none";
+      // const price = 1219;
+      // const subtotal = document.getElementById(idOne).innerText;
+      // const subtotalNum = parseFloat(subtotal);
+      // const itemDecrease = document.getElementById(idTwo).value;
+      // const itemNumberDecrease = parseFloat(itemDecrease); 
+      // const subtotalResult = subtotalNum - (price * itemNumberDecrease) ;
+      // document.getElementById(idOne).innerText = subtotalResult;
+      // const taxTwoDigit = subtotalNum * 0.09;
+      // document.getElementById(idThree).innerText = (taxTwoDigit - (price * itemNumberDecrease * 0.09)).toFixed(2);
+      // document.getElementById(idFour).innerText = (subtotalResult + taxTwoDigit - (price * itemNumberDecrease * 0.09)).toFixed(2);
+         
       // }
 
    //  function subtotal(id , price){
