@@ -158,7 +158,7 @@
 
     function decreaseValue(id){
       const itemDecrease = document.getElementById(id).value;
-         const itemNumberDecrease = parseFloat(itemDecrease);
+      const itemNumberDecrease = parseFloat(itemDecrease);
          
       let newNum = itemNumberDecrease - 1;
       document.getElementById(id).value=newNum; 
@@ -176,7 +176,7 @@
     const subtotalMobileNum = parseFloat(subtotalMobile);
     const subtotalCase = document.getElementById("iphoneCase").innerText;
     const subtotal_casing = parseFloat(subtotalCase);
-    const subTotal = subtotalMobileNum+subtotal_casing;
+    const subTotal = subtotalMobileNum + subtotal_casing;
     document.getElementById("subtotal").innerText = subTotal;
     const taxTwoDigit = subTotal * 0.09;
     document.getElementById("tax").innerText = taxTwoDigit.toFixed(2);
@@ -184,24 +184,59 @@
     document.getElementById("total").innerText = total;
 }
 
+   //  const subtotalMobile = document.getElementById("iphone").innerText;
+   //  const subtotalMobileNum = parseFloat(subtotalMobile);
+   //  const taxTwoDigit = subtotalMobileNum * 0.09;
+   //  document.getElementById("tax").innerText = taxTwoDigit.toFixed(2);
+
+
 
       const removeOne = document.getElementById("removeOne");
       removeOne.addEventListener("click", function(){
-         
-         removeCart("visible");
+      document.getElementById("visible").style.display= "none";
+
+      const subtotal = document.getElementById("subtotal").innerText;
+      const subtotalNum = parseFloat(subtotal);
+      const itemDecrease = document.getElementById("itemNumber").value;
+      const itemNumberDecrease = parseFloat(itemDecrease); 
+      const subtotalResult = subtotalNum - (1219 * itemNumberDecrease) ;
+      document.getElementById("subtotal").innerText = subtotalResult;
+      
+      const taxTwoDigit = subtotalNum * 0.09;
+      document.getElementById("tax").innerText = (taxTwoDigit - (1219 * itemNumberDecrease * 0.09)).toFixed(2);
+
+      document.getElementById("total").innerText = (subtotalResult + taxTwoDigit - (1219 * itemNumberDecrease * 0.09));
+ 
+      
+      
+
+      
+     
+
+      
          
       })
 
       const removeTwo = document.getElementById("removeTwo");
       removeTwo.addEventListener("click", function(){
-         removeCart("invisible");
+      document.getElementById("invisible").style.display= "none";
+      const subtotal = document.getElementById("subtotal").innerText;
+      const subtotalNum = parseFloat(subtotal);
+      const itemDecrease = document.getElementById("itemNumberOne").value;
+      const itemNumberDecrease = parseFloat(itemDecrease); 
+      const subtotalResult = subtotalNum - (59 * itemNumberDecrease) ;
+      document.getElementById("subtotal").innerText = subtotalResult;
+      const taxTwoDigit = subtotalNum * 0.09;
+      document.getElementById("tax").innerText = (taxTwoDigit - (59 * itemNumberDecrease * 0.09)).toFixed(2);
+
+      document.getElementById("total").innerText = (subtotalResult + taxTwoDigit - (59 * itemNumberDecrease * 0.09)).toFixed(2);
+      
          
       })
 
-      function removeCart(id) {
-         document.getElementById(id).style.display= "none";
-         
-      }
+      // function removeCart(id) {
+      //    document.getElementById(id).style.display= "none";    
+      // }
 
    //  function subtotal(id , price){
    //  const subtotal = document.getElementById(id).innerText;
