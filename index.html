@@ -64,9 +64,9 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5 >$<span id="subtotal">1,278</span></h5>
-                        <h5 >$<span id="tax">0</span></h5>
-                        <h5 >$<span>1,278</span></h5>
+                        <h5 >$<span id="subtotal">1278</span></h5>
+                        <h5 >$<span id="tax">124.60</span></h5>
+                        <h5 >$<span id="total">1278</span></h5>
                      </div>
                   </div>
                </div>
@@ -89,7 +89,22 @@
          const subtotalNum = parseFloat(subtotal);
          const subtotalResult = subtotalNum + 1219;
          document.getElementById("subtotal").innerText = subtotalResult; 
-         console.log(subtotalResult);
+         
+
+         const tax = document.getElementById("tax").innerText;
+         const taxNum = parseFloat(tax);
+         const taxAmount = 9.75;
+         const taxOver = taxNum + subtotalResult;
+         const totalTax = (taxOver * taxAmount)/100;
+         document.getElementById("tax").innerText = totalTax.toFixed(2);
+
+         const totalAmount = document.getElementById("total").innerText ;
+         const totalAmountNumber = parseFloat(totalAmount);
+         document.getElementById("total").innerText = (subtotalResult + totalTax).toFixed(2);
+
+
+
+        
       })
 
       const minus = document.getElementById("minus");
@@ -100,7 +115,20 @@
          const subtotal = document.getElementById("subtotal").innerText;
          const subtotalNum = parseFloat(subtotal);
          const subtotalResult = subtotalNum - 1219;
+         console.log("subtotalNum");
          document.getElementById("subtotal").innerText = subtotalResult; 
+
+
+         const tax = document.getElementById("tax").innerText;
+         const taxNum = parseFloat(tax);
+         const taxAmount = 9.75;
+         const taxOver = taxNum + subtotalResult;
+         const totalTax = (taxOver * taxAmount)/100;
+         document.getElementById("tax").innerText = totalTax.toFixed(2);
+
+         const totalAmount = document.getElementById("total").innerText ;
+         const totalAmountNumber = parseFloat(totalAmount);
+         document.getElementById("total").innerText = (subtotalResult + totalTax).toFixed(2);
          
       })
 
@@ -108,15 +136,50 @@
       plusOne.addEventListener("click", function(){  
          increaseValue("itemNumberOne");
          price("iphoneCase", 59, "itemNumberOne") ;
-         subtotal("subtotal", 59); 
+         
+
+         const subtotal = document.getElementById("subtotal").innerText;
+         const subtotalNum = parseFloat(subtotal);
+         const subtotalResult = subtotalNum + 59;
+         console.log("subtotalNum");
+         document.getElementById("subtotal").innerText = subtotalResult; 
+
+         const tax = document.getElementById("tax").innerText;
+         const taxNum = parseFloat(tax);
+         const taxAmount = 9.75;
+         const taxOver = taxNum + subtotalResult;
+         const totalTax = (taxOver * taxAmount)/100;
+         document.getElementById("tax").innerText = totalTax.toFixed(2);
+
+         const totalAmount = document.getElementById("total").innerText ;
+         const totalAmountNumber = parseFloat(totalAmount);
+         document.getElementById("total").innerText = (subtotalResult + totalTax).toFixed(2);
          
       })
 
       const minusOne = document.getElementById("minusOne");
       minusOne.addEventListener("click", function(){ 
          decreaseValue("itemNumberOne", "invisible");
-         price("iphoneCase", 59, "itemNumberOne");      
+         price("iphoneCase", 59, "itemNumberOne");  
          
+         const subtotal = document.getElementById("subtotal").innerText;
+         const subtotalNum = parseFloat(subtotal);
+         const subtotalResult = subtotalNum - 59;
+         console.log(subtotalNum);
+         document.getElementById("subtotal").innerText = subtotalResult; 
+         
+
+         const tax = document.getElementById("tax").innerText;
+         const taxNum = parseFloat(tax);
+         const taxAmount = 9.75;
+         const taxOver = taxNum + subtotalResult;
+         const totalTax = (taxOver * taxAmount)/100;
+         document.getElementById("tax").innerText = totalTax.toFixed(2);
+         
+     
+         const totalAmount = document.getElementById("total").innerText ;
+         const totalAmountNumber = parseFloat(totalAmount);
+         document.getElementById("total").innerText = (subtotalResult + totalTax).toFixed(2);
       })
 
 
