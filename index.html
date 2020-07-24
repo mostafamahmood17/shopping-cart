@@ -178,14 +178,14 @@
     const subtotal_casing = parseFloat(subtotalCase);
     const subTotal = subtotalMobileNum+subtotal_casing;
     document.getElementById("subtotal").innerText = subTotal;
-    const tax_two_digit = subTotal*0.09;
-    document.getElementById("tax").innerText = tax_two_digit.toFixed(2);
-    const total = tax_two_digit + subTotal;
+    const taxTwoDigit = subTotal * 0.09;
+    document.getElementById("tax").innerText = taxTwoDigit.toFixed(2);
+    const total = taxTwoDigit + subTotal;
     document.getElementById("total").innerText = total;
 }
 
 
-const removeOne = document.getElementById("removeOne");
+      const removeOne = document.getElementById("removeOne");
       removeOne.addEventListener("click", function(){
          
          removeCart("visible");
@@ -194,7 +194,6 @@ const removeOne = document.getElementById("removeOne");
 
       const removeTwo = document.getElementById("removeTwo");
       removeTwo.addEventListener("click", function(){
-         
          removeCart("invisible");
          
       })
