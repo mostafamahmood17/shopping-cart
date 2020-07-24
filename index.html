@@ -30,7 +30,7 @@
                            <button id = "plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
                         <h5 >$<span id = "iphone">1219</span></h5>
-                        <img src="images/remove.png" alt="" class="remove-item">
+                        <img src="images/remove.png" alt="" class="remove-item" id="removeOne">
                      </div>
                   </div>
                </div>
@@ -49,7 +49,7 @@
 
                         </div>
                         <h5>$<span id = "iphoneCase">59</span></h5>
-                        <img src="images/remove.png" alt="" class="remove-item">
+                        <img src="images/remove.png" alt="" class="remove-item" id="removeTwo">
                      </div>
                   </div>
                </div>
@@ -65,8 +65,8 @@
 
                      <div class="col-md-4 status">
                         <h5 >$<span id="subtotal">1278</span></h5>
-                        <h5 >$<span id="tax">124.60</span></h5>
-                        <h5 >$<span id="total">1278</span></h5>
+                        <h5 >$<span id="tax">115.02</span></h5>
+                        <h5 >$<span id="total">1393.02</span></h5>
                      </div>
                   </div>
                </div>
@@ -80,6 +80,8 @@
 
 
    <script>
+      
+
       const plus = document.getElementById("plus");
       plus.addEventListener("click", function(){  
          increaseValue("itemNumber");
@@ -90,20 +92,8 @@
          const subtotalResult = subtotalNum + 1219;
          document.getElementById("subtotal").innerText = subtotalResult; 
          
-
-         const tax = document.getElementById("tax").innerText;
-         const taxNum = parseFloat(tax);
-         const taxAmount = 9.75;
-         const taxOver = taxNum + subtotalResult;
-         const totalTax = (taxOver * taxAmount)/100;
-         document.getElementById("tax").innerText = totalTax.toFixed(2);
-
-         const totalAmount = document.getElementById("total").innerText ;
-         const totalAmountNumber = parseFloat(totalAmount);
-         document.getElementById("total").innerText = (subtotalResult + totalTax).toFixed(2);
-
-
-
+         total_amount();
+        
         
       })
 
@@ -117,19 +107,8 @@
          const subtotalResult = subtotalNum - 1219;
          console.log("subtotalNum");
          document.getElementById("subtotal").innerText = subtotalResult; 
-
-
-         const tax = document.getElementById("tax").innerText;
-         const taxNum = parseFloat(tax);
-         const taxAmount = 9.75;
-         const taxOver = taxNum + subtotalResult;
-         const totalTax = (taxOver * taxAmount)/100;
-         document.getElementById("tax").innerText = totalTax.toFixed(2);
-
-         const totalAmount = document.getElementById("total").innerText ;
-         const totalAmountNumber = parseFloat(totalAmount);
-         document.getElementById("total").innerText = (subtotalResult + totalTax).toFixed(2);
-         
+ 
+         total_amount();    
       })
 
       const plusOne = document.getElementById("plusOne");
@@ -141,20 +120,8 @@
          const subtotal = document.getElementById("subtotal").innerText;
          const subtotalNum = parseFloat(subtotal);
          const subtotalResult = subtotalNum + 59;
-         console.log("subtotalNum");
-         document.getElementById("subtotal").innerText = subtotalResult; 
-
-         const tax = document.getElementById("tax").innerText;
-         const taxNum = parseFloat(tax);
-         const taxAmount = 9.75;
-         const taxOver = taxNum + subtotalResult;
-         const totalTax = (taxOver * taxAmount)/100;
-         document.getElementById("tax").innerText = totalTax.toFixed(2);
-
-         const totalAmount = document.getElementById("total").innerText ;
-         const totalAmountNumber = parseFloat(totalAmount);
-         document.getElementById("total").innerText = (subtotalResult + totalTax).toFixed(2);
-         
+         document.getElementById("subtotal").innerText = subtotalResult;      
+         total_amount();   
       })
 
       const minusOne = document.getElementById("minusOne");
@@ -165,28 +132,16 @@
          const subtotal = document.getElementById("subtotal").innerText;
          const subtotalNum = parseFloat(subtotal);
          const subtotalResult = subtotalNum - 59;
-         console.log(subtotalNum);
          document.getElementById("subtotal").innerText = subtotalResult; 
          
-
-         const tax = document.getElementById("tax").innerText;
-         const taxNum = parseFloat(tax);
-         const taxAmount = 9.75;
-         const taxOver = taxNum + subtotalResult;
-         const totalTax = (taxOver * taxAmount)/100;
-         document.getElementById("tax").innerText = totalTax.toFixed(2);
-         
-     
-         const totalAmount = document.getElementById("total").innerText ;
-         const totalAmountNumber = parseFloat(totalAmount);
-         document.getElementById("total").innerText = (subtotalResult + totalTax).toFixed(2);
+         total_amount();
       })
 
 
 
       function price(id, addValue, idOne){
          const iphone = document.getElementById(id);
-         const iphoneIncrease = parseInt(iphone);
+         const iphoneIncrease = parseFloat(iphone);
          let newNum= document.getElementById(idOne).value;
          document.getElementById(id).innerText = newNum * addValue; 
          
@@ -194,39 +149,73 @@
 
     function increaseValue(id){
       const itemIncrease = document.getElementById(id).value;
-         const itemNumberIncrease = parseInt(itemIncrease);
+         const itemNumberIncrease = parseFloat(itemIncrease);
           
          let newNum = itemNumberIncrease + 1;
-         document.getElementById(id).value=newNum;  
+         document.getElementById(id).value = newNum;  
 
     }
 
-    function decreaseValue(id , idTwo){
+    function decreaseValue(id){
       const itemDecrease = document.getElementById(id).value;
-         const itemNumberDecrease = parseInt(itemDecrease);
-          
-         let newNum = itemNumberDecrease - 1;
-         document.getElementById(id).value=newNum; 
-         if(newNum == 0){
+         const itemNumberDecrease = parseFloat(itemDecrease);
+         
+      let newNum = itemNumberDecrease - 1;
+      document.getElementById(id).value=newNum; 
+      if(newNum < 1){
             
-            document.getElementById(idTwo).style.display= "none";
+      document.getElementById(id).value= 0;
+      
             
          } 
 
     }
 
+    function total_amount(){
+    const subtotalMobile = document.getElementById("iphone").innerText;
+    const subtotalMobileNum = parseFloat(subtotalMobile);
+    const subtotalCase = document.getElementById("iphoneCase").innerText;
+    const subtotal_casing = parseFloat(subtotalCase);
+    const subTotal = subtotalMobileNum+subtotal_casing;
+    document.getElementById("subtotal").innerText = subTotal;
+    const tax_two_digit = subTotal*0.09;
+    document.getElementById("tax").innerText = tax_two_digit.toFixed(2);
+    const total = tax_two_digit + subTotal;
+    document.getElementById("total").innerText = total;
+}
+
+
+const removeOne = document.getElementById("removeOne");
+      removeOne.addEventListener("click", function(){
+         
+         removeCart("visible");
+         
+      })
+
+      const removeTwo = document.getElementById("removeTwo");
+      removeTwo.addEventListener("click", function(){
+         
+         removeCart("invisible");
+         
+      })
+
+      function removeCart(id) {
+         document.getElementById(id).style.display= "none";
+         
+      }
+
    //  function subtotal(id , price){
    //  const subtotal = document.getElementById(id).innerText;
-   //  const subtotalNum = parseInt(subtotal);
+   //  const subtotalNum = parseFloat(subtotal);
    //  document.getElementById(id).innerText = subtotalNum * price;
     
    //  }
    
 
    //  const iphoneCaseValue = document.getElementById("iphoneCase").innerText;
-   //  const iphoneCaseValuePrice = parseInt(iphoneCaseValue);
+   //  const iphoneCaseValuePrice = parseFloat(iphoneCaseValue);
    //  const iphoneValue = document.getElementById("iphone").innerText;
-   //  const iphoneValuePrice = parseInt(iphoneValue);
+   //  const iphoneValuePrice = parseFloat(iphoneValue);
    //  document.getElementById("subtotal").innerText = iphoneCaseValuePrice + iphoneValuePrice;
 
 
